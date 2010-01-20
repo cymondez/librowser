@@ -9,8 +9,14 @@ using Skybound.Gecko;
 
 namespace Bootstrap
 {
+   /// <summary>
+   /// 
+   /// </summary>
    public partial class MainForm : Form
    {
+      /// <summary>
+      /// 
+      /// </summary>
       public MainForm()
       {
          InitializeComponent();
@@ -18,8 +24,8 @@ namespace Bootstrap
 
       private void Form1_Load( object sender, EventArgs e )
       {
-         browser.Navigate( "http://www.unigc.com/" );
-         //browser.Navigate( "http://a.unigc.com/jppw" );
+         //browser.Navigate( "http://www.cnblogs.com/" );
+         browser.Navigate( "http://demo.unigc.com/jppw" );
          browser.CreateWindow += new GeckoCreateWindowEventHandler( browser_CreateWindow );
          //browser.
          //Skybound.Gecko.GeckoPreferences.Save( @"c:\1.txt" );
@@ -54,8 +60,19 @@ namespace Bootstrap
          dialog.FormBorderStyle = FormBorderStyle.Sizable;
          dialog.MaximizeBox = true;
          dialog.MinimizeBox = true;
+         dialog.WebBrowser.Navigating += new GeckoNavigatingEventHandler( browser_Navigating);
          dialog.Show();
          //dialog.WebBrowser.Window.Document.
+      }
+
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private static void browser_Navigating( object sender, GeckoNavigatingEventArgs e )
+      {
+         ((GeckoWebBrowser) sender).Text = e.Uri.ToString();
       }
    }
 }
