@@ -14,7 +14,7 @@ namespace Bootstrap
       {
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault( false );
-         Skybound.Gecko.Xpcom.Initialize( @"D:\Workspace\trunk\Librowser\xulrunner" );
+         Skybound.Gecko.Xpcom.Initialize( @"..\..\xulrunner" );
          Application.Run( new MainForm() );
       }
    }
